@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ES - WEBPAGE</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+    }
+    .snippet-container {
+        max-width: 500px;
+        margin: 50px auto;
+        padding: 10px;
+        background-color: #fff;
+        border-radius: 6px;
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    }
+    .snippet {
+        margin-bottom: 20px;
+    }
+    textarea {
+        width: 100%;
+        height: 100px;
+        margin-bottom: 10px;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        resize: vertical;
+    }
+    .copy-button {
+        padding: 6px 12px;
+        font-size: 14px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    .copy-button:hover {
+        background-color: #0056b3;
+    }
+</style>
+</head>
+<body>
+
+<div class="snippet-container">
+    <h2>Instruction to use This Page!</h2>
+    <h5 style="color: red;">1. Use find option in browser to search the aim (CLT+F) To find the questions<hr>
+        2. <b>Keil</b> and TinkerCAD Practical are devided<hr>
+        3. In TinkerCAD Section Click on Aim/Title/Blue Link to see the Tinker Readymade Practical if they allow to use tinker on browser and use of internet then it will be useful.
+        <hr>
+        <hr>
+        <h3>
+       <b style="color: green;"><i>Keil Practial START FROM Here!</i></b>
+
+        </h3>
+     <hr>
+        <hr>
+    <!-- Example of two snippets, you can add more as needed -->
+    <div class="snippet">
+        <h3>Program to generate Triangular wave </h3>
+        <textarea class="java-code" readonly>#include<reg51.h>
+void main(){
+P1 += 0x00;
+while(1){
+do{
+P1 += 0x05; 
+} while(P1 < 0xFF);
+do{
+P1 -= 0x05;
+}while(P1 > 0x00);
+}
+}
+
+
+</textarea>
+        <button class="copy-button" onclick="copyCode(this)">Copy</button>
+    </div>
+    
+    <div class="snippet">
+        <h3>Program to generate Square wave</h3>
+        <textarea class="java-code" readonly>#include<reg51.h>
+void delay(int time);
+void main()
+{
+P1=0x00;
+while(1)
+{
+P1=0xFF;
+delay(1);
+P1=0x00;
+delay(1);
+}
+}
+void delay(int time)
+{
+int i,j;
+for(i=0;i<=time;i++);
+for(j=0;j<=2;j++);
+
+}
+</textarea>
+        <button class="copy-button" onclick="copyCode(this)">Copy</button>
+    </div>
+
+        <div class="snippet">
+        <h3>Program to generate Sine wave</h3>
+        <textarea class="java-code" readonly>#include<reg51.h>
+#include<intrins.h>
+void main()
+{
+unsigned i;
+unsigned int wavevalue[16]= {128,192,224,240,255,240,224,192,128,64,32,16,0,16,32,64};
+
+while(1)
+{
+for(i=0;i<16;i++)
+P1=wavevalue[i];
+_nop_();
+_nop_();
+_nop_();
+_nop_();
+_nop_();
+_nop_();
+}
+}
+</textarea>
+        <button class="copy-button" onclick="copyCode(this)">Copy</button>
+    </div>
+
+<div class="snippet">
+        <h3>Program for serial communication of data</h3>
+        <textarea class="java-code" readonly>#include<reg51.h>
+void send(char);
+void main()
+{
+TMOD=0x20;
+TH1=0xFD;
+SCON=0x50;
+TR1=1;
+
+send('H');  
+send('E');  
+send('L');
+send('L');
+send('O');
+
+while(1);
+}
+void send(char k)
+{
+SBUF=k;
+while(TI!=1);
+TI=0;
+}
+</textarea>
+        <button class="copy-button" onclick="copyCode(this)">Copy</button>
+    </div>
+
+    <div class="snippet">
+        <h3>Program to display LED. Simulate binary counter (8 bit) on LED.</h3>
+        <textarea class="java-code" readonly>#include<reg51.h>
+void delay();
+void main()
+{
+while(1)
+{
+P0=0x01;
+delay();
+
+P0=0x02;
+delay();
+
+P0=0x04;
+delay();
+
+P0=0x08;
+delay();
+
+P0=0x10;
+delay();
+
+P0=0x20;
+delay();
+
+P0=0x40;
+delay();
+
+P0=0x80;
+delay();}
+
+}
+
+void delay()
+{
+long int i=10000;
+while(i--);
+}
+</textarea>
+        <button class="copy-button" onclick="copyCode(this)">Copy</button>
+    </div>
+
+    <div class="snippet">
+        <h3>Program to display Blinking LED.</h3>
+        <textarea class="java-code" readonly>#include<reg51.h>
+void delay(unsigned int);
+void main()
+{
+while(1)
+{
+P0=0x00;
+delay(100);
+P0=0xff;
+delay(100);
+}
+}
+
+void delay(unsigned int x)
+{
+unsigned int i,j;
+for(i=0;i<x;i++)
+{
+for(j=0;j<1275;j++);
+}
+}
+</textarea>
+        <button class="copy-button" onclick="copyCode(this)">Copy</button>
+    </div>
+
+    <div class="snippet">
+        <h3>Program to display LED Pattern</h3>
+        <textarea class="java-code" readonly>#include<reg52.h>
+
+sbit LED = P0^0;            
+
+void Delay(void);           
+
+void main (void)
+{
+    while(1)              
+    {
+        LED = 0;
+        Delay();
+        LED = 1;
+        Delay();
+    }
+}
+
+void Delay(void)
+{
+    int j;
+    int i;
+    for(i=0;i<10;i++)
+    {
+        for(j=0;j<10000;j++)
+        {
+        }
+    }
+}
+</textarea>
+        <button class="copy-button" onclick="copyCode(this)">Copy</button>
+    </div>
+
+    <hr>
+    <b style="color: red;"><i>TinkerCARD Practial START FROM Here!</i></b>
+    <hr>
+
+
+
+    <div class="snippet">
+        <h3><a href="https://www.tinkercad.com/things/3D38hmg0kor-program-using-temperature-sensor?sharecode=X4P1O0_f-US5S7mfc8USScmwRJNb8Yg1YR_0eeR_gXs" target="_blank">Program using Temperature Sensor</a></h3>
+        <img src="https://jpcdn.it/img/829a25ffeaae08e94ef85515adaa0fb2.png" alt="Image description" width="250">
+        <textarea>Components used
+1)Arduino Uno 
+2) Temperature Sensor
+</textarea>
+        <textarea class="java-code" readonly>int sensorvalue=0;
+void setup()
+{
+  Serial.begin(9600);
+    pinMode(A1,INPUT);
+    }
+void loop()
+{
+  sensorvalue=analogRead(A1);
+  Serial.print("SENSOR VALUE");
+  Serial.println(sensorvalue);
+  int voltage=sensorvalue*(5000/1024.0);
+  int temperature=(voltage-500)/10;
+  Serial.print("TEMPERATURE VALUE");
+  Serial.print(temperature);
+}
+</textarea>
+        <button class="copy-button" onclick="copyCode(this)">Copy</button>
+    </div>
+
+
+
+    <div class="snippet">
+        <h3><a href="https://www.tinkercad.com/things/12DjKPkchrV-program-using-gas-sensor?sharecode=iabZP8iBvrcgWt4sOnyt56BY3hC0WOCHuucFYJq4BLY" target="_blank">Program using Gas Sensor</a></h3>
+        <img src="https://jpcdn.it/img/r/530/361/8bd5869f70358d2cd5ee6123180e64f0.png" alt="Image description" width="200">
+        <textarea>Components used
+1) Arduino Uno
+2)Gas sensor
+3) Resistor
+</textarea>
+        <textarea class="java-code" readonly>void setup()
+{
+Serial.begin(9600);
+}
+void loop()
+{
+  int a=analogRead(A0);
+  int b=map(a,0,1023,0,255);
+  Serial.println(b);
+}
+</textarea>
+        <button class="copy-button" onclick="copyCode(this)">Copy</button>
+    </div>
+
+    <div class="snippet">
+        <h3><a href="https://www.tinkercad.com/things/02nDKg721cg-program-using-light-sensor?sharecode=XBuBl642W8ZCEPbu6z22cS50PmJnsimWh1qmLr614S8" target="_blank">Program using Light Sensor</a></h3>
+        <img src="https://jpcdn.it/img/r/514/305/5ff43fe001e7faa30aff6e4a387e2b54.png" alt="Image description" width="200">
+        <textarea>Components used
+1) Ardino Uno
+2) Red Led
+3)2 Resistors
+4) Ambient Light Sensor
+</textarea>
+        <textarea class="java-code" readonly>int temp6000Pin=A0;
+float light;
+int light_value;
+void setup(){
+  Serial.begin(112500);
+  pinMode(temp6000Pin,INPUT);
+  pinMode(13,OUTPUT);
+}
+void loop(){
+  int light_value=analogRead(temp6000Pin);
+  light=light_value*0.0976;
+  Serial.println(light);
+  delay(100);
+  if(light_value>1000){
+    digitalWrite(13,HIGH);
+  }
+  else 
+  {
+    digitalWrite(13,LOW);
+  }
+}
+
+</textarea>
+        <button class="copy-button" onclick="copyCode(this)">Copy</button>
+    </div>
+
+        <div class="snippet">
+            <h3><a href="https://www.tinkercad.com/things/5SNQJjmaBar-program-for-humidity-sensor?sharecode=3Q5iCcrr1e7UGk8i7TprlKwWWr7B23B-9YvAJhiLTv0" target="_blank">Program for Humidity Sensor</a></h3>
+        <img src="https://jpcdn.it/img/r/507/364/5bc5e713b9df1de44b4b8c1b55da9442.png" alt="Image description" width="200">
+        <textarea>Components Required
+1) Aurdino uno
+2) Potentiometer
+</textarea>
+        <textarea class="java-code" readonly>/* 
+This code records the humidity using a simulated potentiometer 
+The Humidity is simulated by mapping the potentiometer output into percentages 
+*/ 
+const int analogIn = A1; // Connect the humidity sensor to this p 
+int humiditySensorOutput = 0; 
+void setup() { 
+    Serial.begin(9600); 
+} 
+void loop() { 
+humiditySensorOutput=analogRead(analogIn); 
+int humidityPercentage =map (humiditySensorOutput, 0,1023,10,70) ; 
+Serial.print("Humidity:"); // Printing out Hund die regentag 
+Serial.print (humidityPercentage); 
+Serial.println("%");
+delay(5000); // Iterate every 5 seconds 
+}
+
+</textarea>
+        <button class="copy-button" onclick="copyCode(this)">Copy</button>
+    </div>
+
+        <div class="snippet">
+            <h3><a href="https://www.tinkercad.com/things/3kvAIvDu8Wu-door-buzzer-using-ultrasonic-sensor?sharecode=l12B_6PE59wZg4rcau0rLBH13xAJdY90k_YedB-HVaA" target="_blank">Door Buzzer using ultrasonic sensor</a></h3>
+        <img src="https://jpcdn.it/img/r/504/291/78b829d56e19332c01dfbc4afe317ebd.png" alt="Image description" width="200">
+        <textarea>Components Required
+1) Aurdino Uno
+2) ultrasonic distance sensor
+3) piezo
+</textarea>
+        <textarea class="java-code" readonly>int trigger_pin=2;  
+
+int echo_pin=3; 
+
+int buzzer_pin=10;
+
+int time; 
+
+int distance; 
+
+void setup()  
+
+{
+Serial.begin(9600); 
+
+          pinMode (trigger_pin, OUTPUT); 
+
+          pinMode (echo_pin, INPUT); 
+
+          pinMode (buzzer_pin, OUTPUT); 
+
+}
+void loop()  
+
+{ 
+       digitalWrite (trigger_pin, HIGH); 
+
+       delayMicroseconds (10); 
+
+       digitalWrite (trigger_pin, LOW); 
+
+        time = pulseIn (echo_pin,HIGH); 
+
+        distance = (time * 0.034) / 2;
+
+if (distance <= 10) 
+
+{
+  Serial.print("Door open"); 
+
+        Serial.print("Distance="); 
+
+        Serial.println (distance); 
+
+        digitalWrite (buzzer_pin, HIGH); 
+
+        delay(500); 
+
+}  
+
+else { 
+
+         Serial.println ( "Door closed"); 
+
+         Serial.print ("Distance="); 
+
+         Serial.println (distance); 
+
+         digitalWrite (buzzer_pin, LOW); 
+
+         delay (500); 
+
+} 
+
+}</textarea>
+        <button class="copy-button" onclick="copyCode(this)">Copy</button>
+    </div>
+
+        <div class="snippet">
+        <h3><a href="https://www.tinkercad.com/things/hIiKUqbVfqh-program-for-servo-motor?sharecode=0vtLj2NykxozFNw3EI18_IGWfdLGvWKBWxSPd7JxmZk" target="_blank">program for servo motor</a></h3>
+        <img src="https://jpcdn.it/img/r/494/381/e4d961b0d18f21fbc2b36af835cadfaa.png" alt="Image description" width="200">
+        <textarea>Components required 
+1)Aurdino uno
+2)Servo
+</textarea>
+        <textarea class="java-code" readonly>#include<Servo.h>
+Servo servoBase;
+void setup()
+{
+      servoBase.attach(A1);
+  servoBase.write(0);
+}
+void loop()
+{
+  for (int i=0;i<=180;i=i+10)
+  {
+      servoBase.write(i);
+    delay(1000);
+  }
+}
+
+</textarea>
+        <button class="copy-button" onclick="copyCode(this)">Copy</button>
+    </div>
+
+    <script>
+function copyCode(button) {
+    const snippet = button.parentElement;
+    const javaCode = snippet.querySelector(".java-code");
+    javaCode.select();
+    document.execCommand("copy");
+}
+
+function copyCode1(button) {
+    const snippet = button.parentElement;
+    const javaCode = snippet.querySelector(".java1-code");
+    javaCode.select();
+    document.execCommand("copy");
+}
+</script>
+
+
+<!-- Code by kaimu -->
+</body>
+</html>
